@@ -1,5 +1,5 @@
 module.exports = {
-	'jwtSecret':'gobucks',
-	'appName':'brutus',
-	'appPassword':'winning'
+    'jwtSecret':'gobucks',
+    'appName':'brutus',
+    'appPassword':'winning'
 }
