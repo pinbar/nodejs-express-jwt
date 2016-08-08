@@ -24,4 +24,4 @@
     * the credentials are in a config file but you can pull from a DB as well
     * the response contains the JWT token (expiry is set to 60 seconds)
 * add an Authorization request header when calling the secure api `/levrai`
-    * Request header => Authorization: Bearer _token_
+    * Request header => Authorization: Bearer `token`
