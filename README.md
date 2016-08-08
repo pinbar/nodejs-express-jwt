@@ -18,10 +18,11 @@
 ### Trying the APIs and authentication flows
 * launch the browser and point to the baseurl `localhost:8081`
 * access the unsecure api `/metacortex`
-* try accessing the secure api `/levrai`
+* everything behind `/api` is secure
+* try accessing the secure api `/api/levrai`
 * obtain a JWT token here `/authenticate.html`
     * enter application name(brutus) and password(winning)
     * the credentials are in a config file but you can pull from a DB as well
     * the response contains the JWT token (expiry is set to 60 seconds)
-* add an Authorization request header when calling the secure api `/levrai`
+* add an Authorization request header when calling the secure api `/api/levrai`
     * Request header => Authorization: Bearer `token`
