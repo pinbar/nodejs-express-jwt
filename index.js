@@ -3,6 +3,7 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var jwtUtil = require('jsonwebtoken');
 var config = require('./config');
+var authenticator = require('./authenticator');
 
 var app = express();
 
@@ -24,20 +25,21 @@ app.get('/metacortex', function(request, response){
 });
 
 app.post('/authenticate', urlEncodedParser, function(request, response){
-    if(!request.body.applicationName && !request.body.applicationPassword) {
+    var name = request.body.programName;
+    var password = request.body.programPassword;
+    if(!name || !password) {
         response.status(400).send('Bad request');
     } else {
-        if(request.body.applicationName != config.appName || request.body.applicationPassword != config.appPassword) {
-            return response.status(401).end('Wrong credentials');
-        } else {
+        if(authenticator.authenticate(name, password)) {
             var claim = {
-                app: request.body.applicationName,
-                role: 'all'
+                program: name
             }
             var token = jwtUtil.sign(claim, config.jwtSecret, {
                 expiresIn: 60
             });
             response.send('JWT: ' + token);
+        } else {
+            return response.status(401).end('Wrong credentials');
         }
     }
 });
@@ -65,8 +67,17 @@ apiRouter.use(function(request, response, next){
 //any routes below this will be protected
 app.use('/api', apiRouter);
 
+apiRouter.get('/megacity', function(request, response){
+    response.send('Welcome to the Mega City!');
+});
+
 apiRouter.get('/levrai', function(request, response){
-    response.send('Merovingian\'s \"secure\" restaurant!');
+    var program = request.decodedToken.program;
+    if(program === 'neo') {
+        response.send(program + '! Welcome to Merovingian\'s \"secure\" restaurant!');
+    } else {
+        response.status(403).send(program + '! You are forbidden from entering Merovingian\'s \"secure\" restaurant!');
+    }
 });
 
 //default fallthrough handler
