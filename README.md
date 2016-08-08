@@ -1,4 +1,4 @@
-# A simple example of nodejs api with express and jwt authentication
+## A simple example of nodejs api with express and jwt authentication
 
 ### tech stack
 * **nodejs** - javascript runtime built on v8 engine
