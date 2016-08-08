@@ -1,0 +1,26 @@
+# Project
+.project
+.settings
+
+# Dependencies
+node_modules/
+
+# mac crap
+.DS_Store
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.node_repl_history
+
+# Logs
+logs
+
+*.log
+npm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
