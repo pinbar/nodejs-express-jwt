@@ -1,7 +1,7 @@
 {
-  "name": "nodejs-express-simple",
+  "name": "nodejs-express-jwt",
   "version": "1.0.0",
-  "description": "Simple nodejs app with express",
+  "description": "A simple example of nodejs api with authentication",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
