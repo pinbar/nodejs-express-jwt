@@ -49,7 +49,7 @@ app.post('/authenticate', urlEncodedParser, function(request, response){
 var apiRouter = express.Router();
 apiRouter.use(function(request, response, next){
     var token = request.get('Authorization');
-    if(token) {
+    if(token && token.includes("Bearer")) {
         token = token.replace("Bearer ","");
         jsonwebtoken.verify(token.trim(), config.jwtSecret, function(error, decoded){
             if(error) {

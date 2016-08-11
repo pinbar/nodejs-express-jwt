@@ -6,17 +6,17 @@ var passPhrase = config.cryptoPassphrase;
 
 module.exports = {
 
-    encrypt: function encrypt(claim) {
+    encrypt: function encrypt(text) {
         var cipher = crypto.createCipher(algorithm, passPhrase);
-        var crypted = cipher.update(claim,'utf8','hex');
+        var crypted = cipher.update(text,'utf8','hex');
         crypted += cipher.final('hex');
         return crypted;
     },
 
-    decrypt: function decrypt(claim) {
+    decrypt: function decrypt(text) {
         var decipher = crypto.createDecipher(algorithm, passPhrase);
-        console.log(claim);
-        var decrypted = decipher.update(claim,'hex','utf8');
+        console.log(text);
+        var decrypted = decipher.update(text,'hex','utf8');
         decrypted += decipher.final('utf8');
         return decrypted;
     }

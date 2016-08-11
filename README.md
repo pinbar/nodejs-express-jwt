@@ -28,4 +28,4 @@
     * set the `Authorization` request header and add the jwt token, like so:
     * Authorization: Bearer \<token\>
 * `/api/megacity` can be accessed with any valid token but `/api/levrai` can only be accessed with neo's token
-* Some information in the claim is encrypted for privacy
+* some information in the payload is encrypted for privacy
