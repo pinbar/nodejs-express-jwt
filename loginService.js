@@ -1,5 +1,5 @@
 module.exports = {
-	//use a DB to do this
+	//ideally this will be a service/DB to do this
 	authenticate: function(name, password) {
 		if(name === 'neo') {
 			if(password === 'keanu') {

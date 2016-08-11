@@ -1,9 +1,10 @@
 var express = require('express');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
-var jwtUtil = require('jsonwebtoken');
+var jsonwebtoken = require('jsonwebtoken');
 var config = require('./config');
-var authenticator = require('./authenticator');
+var loginService = require('./loginService');
+var cryptoUtil = require('./cryptoUtil');
 
 var app = express();
 
@@ -30,12 +31,13 @@ app.post('/authenticate', urlEncodedParser, function(request, response){
     if(!name || !password) {
         response.status(400).send('Bad request');
     } else {
-        if(authenticator.authenticate(name, password)) {
+        if(loginService.authenticate(name, password)) {
             var claim = {
-                program: name
+                program: cryptoUtil.encryptClaim(name),
+                role: cryptoUtil.encryptClaim("theOne"),
             }
-            var token = jwtUtil.sign(claim, config.jwtSecret, {
-                expiresIn: 60
+            var token = jsonwebtoken.sign(claim, config.jwtSecret, {
+                expiresIn: 180
             });
             response.send('JWT: ' + token);
         } else {
@@ -49,8 +51,7 @@ apiRouter.use(function(request, response, next){
     var token = request.get('Authorization');
     if(token) {
         token = token.replace("Bearer ","");
-        console.log("token: " + token);
-        jwtUtil.verify(token, config.jwtSecret, function(error, decoded){
+        jsonwebtoken.verify(token.trim(), config.jwtSecret, function(error, decoded){
             if(error) {
                 console.log("jwt error: " + error);
                 response.status(401).send('Invalid Token. Error Message: ' + error);
@@ -72,11 +73,12 @@ apiRouter.get('/megacity', function(request, response){
 });
 
 apiRouter.get('/levrai', function(request, response){
-    var program = request.decodedToken.program;
+    var encryptedProgram = request.decodedToken.program;
+    var program = cryptoUtil.decryptClaim(encryptedProgram);
     if(program === 'neo') {
-        response.send(program + '! Welcome to Merovingian\'s \"secure\" restaurant!');
+        response.send(program + ', welcome to merovingian\'s \"secure\" restaurant!');
     } else {
-        response.status(403).send(program + '! You are forbidden from entering Merovingian\'s \"secure\" restaurant!');
+        response.status(403).send(program + ', you are forbidden from entering merovingian\'s \"secure\" restaurant!');
     }
 });
 

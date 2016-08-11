@@ -1,3 +1,5 @@
 module.exports = {
-    'jwtSecret':'keymaker'
+    'jwtSecret':'keymaker',
+    'cryptoPassphrase':'matrix',
+    'cryptoAlgorithm':'aes-256-ctr'
 }
