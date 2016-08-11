@@ -3,7 +3,7 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var jsonwebtoken = require('jsonwebtoken');
 var config = require('./config');
-var loginService = require('./loginService');
+var authService = require('./authService');
 var cryptoUtil = require('./cryptoUtil');
 
 var app = express();
@@ -31,10 +31,10 @@ app.post('/authenticate', urlEncodedParser, function(request, response){
     if(!name || !password) {
         response.status(400).send('Bad request');
     } else {
-        if(loginService.authenticate(name, password)) {
+        if(authService.authenticate(name, password)) {
             var claim = {
-                program: cryptoUtil.encryptClaim(name),
-                role: cryptoUtil.encryptClaim("theOne"),
+                program: cryptoUtil.encrypt(name),
+                role: cryptoUtil.encrypt("theOne"),
             }
             var token = jsonwebtoken.sign(claim, config.jwtSecret, {
                 expiresIn: 180
@@ -74,7 +74,7 @@ apiRouter.get('/megacity', function(request, response){
 
 apiRouter.get('/levrai', function(request, response){
     var encryptedProgram = request.decodedToken.program;
-    var program = cryptoUtil.decryptClaim(encryptedProgram);
+    var program = cryptoUtil.decrypt(encryptedProgram);
     if(program === 'neo') {
         response.send(program + ', welcome to merovingian\'s \"secure\" restaurant!');
     } else {

@@ -6,14 +6,14 @@ var passPhrase = config.cryptoPassphrase;
 
 module.exports = {
 
-    encryptClaim: function encryptClaim(claim) {
+    encrypt: function encrypt(claim) {
         var cipher = crypto.createCipher(algorithm, passPhrase);
         var crypted = cipher.update(claim,'utf8','hex');
         crypted += cipher.final('hex');
         return crypted;
     },
 
-    decryptClaim: function decryptClaim(claim) {
+    decrypt: function decrypt(claim) {
         var decipher = crypto.createDecipher(algorithm, passPhrase);
         console.log(claim);
         var decrypted = decipher.update(claim,'hex','utf8');
