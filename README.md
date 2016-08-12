@@ -20,7 +20,9 @@
 
 ### running tests
 * in the project directory, `npm test` to run all tests
-* append a specific test file to run individual tests
+* to run a single test
+    * install node-jasmine globally `npm install -g node-jasmine`
+    * in the project directory, run `node-jasmine spec/authService.js`
 
 ### api and authentication scenarios
 * access the unsecure api `/metacortex`
