@@ -11,21 +11,27 @@
 ### getting started
 * clone repo and `npm install`
 * in the project directory, run either `node` or `node index.js`
+* launch the browser and point to the baseurl `localhost:8081`
 * *optional:*
     * use **nodemon** to monitor for changes in your nodejs app and automatically restart the server
     * `npm install -g nodemon`
     * in the project directory run either `nodemon` or `nodemon index.js`
 
 ### api and authentication scenarios
-* launch the browser and point to the baseurl `localhost:8081`
 * access the unsecure api `/metacortex`
-* everything behind `/api` is secure
+* all `/api/*` calls are secured with JWT authentication
 * try accessing the secure api `/api/megacity` to see an auth error
 * obtain a JWT token here `/authenticate.html`
     * enter program name:password (neo:keanu or morpheus:laurence)
-    * the response contains a JWT token for that program (expiry is set to 60 seconds)
-* use the token when calling secure api:
+    * the response contains a JWT token for that program
+* use the token when calling any secure api (`/api/*`):
     * set the `Authorization` request header and add the jwt token, like so:
     * Authorization: Bearer \<token\>
 * `/api/megacity` can be accessed with any valid token but `/api/levrai` can only be accessed with neo's token
 * some information in the payload is encrypted for privacy
+
+### chaos
+* a middleware introduces `500 - Internal Server Error` errors randomly for any `/oracle/*` api call
+* this _chaos_ can be seen by repeatedly accessing `/oracle/choice`
+
+__note__: all api calls in this example are `GET` unless noted otherwise
