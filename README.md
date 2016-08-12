@@ -7,6 +7,7 @@
 * **morgan** - middleware for logging
 * **jsonwebtoken** - jwt implementation for nodejs
 * **crypto** - cryptography module for nodejs
+* **node-jasmine** - jasmine tests for nodejs
 
 ### getting started
 * clone repo and `npm install`
@@ -16,6 +17,10 @@
     * use __nodemon__ to monitor for changes in your nodejs app and automatically restart the server
     * if you don't have nodemon, install it globally `npm install -g nodemon`
     * in the project directory run `nodemon`
+
+### running tests
+* in the project directory, `npm test` to run all tests
+* append a specific test file to run individual tests
 
 ### api and authentication scenarios
 * access the unsecure api `/metacortex`
@@ -31,7 +36,7 @@
 * some information in the payload is encrypted for privacy
 
 ### chaos
-* a middleware introduces `500 - Internal Server Error` errors randomly for any `/oracle/*` api call
+* a middleware that introduces `500 - Internal Server Error` errors randomly for any `/oracle/*` api call
 * this _chaos_ can be seen by repeatedly accessing `/oracle/choice`
 
 __note__: all api calls in this example are `GET` unless noted otherwise

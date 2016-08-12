@@ -83,7 +83,7 @@ apiRouter.get('/levrai', function(request, response){
 
 var chaosApiRouter = express.Router();
 chaosApiRouter.use(function(request, response, next){
-    if(Math.random() < 0.25) {
+    if(config.causeChaos && Math.random() < config.chaosProbability) {
         response.status(500).send('Anomaly found!!');
     } else {
         next();
