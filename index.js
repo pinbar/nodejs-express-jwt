@@ -64,8 +64,7 @@ apiRouter.use(function(request, response, next){
         response.status(401).send('No access token found');
     }
 });
-
-//any routes below this will be protected
+//any routes that use apiRouter will be protected
 app.use('/api', apiRouter);
 
 apiRouter.get('/megacity', function(request, response){
@@ -80,6 +79,21 @@ apiRouter.get('/levrai', function(request, response){
     } else {
         response.status(403).send(program + ', you are forbidden from entering merovingian\'s \"secure\" restaurant!');
     }
+});
+
+var chaosApiRouter = express.Router();
+chaosApiRouter.use(function(request, response, next){
+    if(Math.random() < 0.25) {
+        response.status(500).send('Anomaly found!!');
+    } else {
+        next();
+    }
+});
+//any routes that use chaosApiRouter will randomly throw an error
+app.use('/oracle', chaosApiRouter);
+
+chaosApiRouter.get('/choice', function(request, response){
+    response.send('Equation is balanced!!');
 });
 
 //default fallthrough handler
