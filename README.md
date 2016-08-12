@@ -10,12 +10,12 @@
 
 ### getting started
 * clone repo and `npm install`
-* in the project directory, run either `node` or `node index.js`
+* in the project directory, run `node index.js`
 * launch the browser and point to the baseurl `localhost:8081`
 * *optional:*
-    * use **nodemon** to monitor for changes in your nodejs app and automatically restart the server
-    * `npm install -g nodemon`
-    * in the project directory run either `nodemon` or `nodemon index.js`
+    * use __nodemon__ to monitor for changes in your nodejs app and automatically restart the server
+    * if you don't have nodemon, install it globally `npm install -g nodemon`
+    * in the project directory run `nodemon`
 
 ### api and authentication scenarios
 * access the unsecure api `/metacortex`
