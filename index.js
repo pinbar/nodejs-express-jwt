@@ -22,7 +22,7 @@ app.get('/', function(request, response){
 });
 
 app.get('/metacortex', function(request, response){
-    response.send('Mr Anderson\'s \"not so secure\" workplace!');
+    response.status(200).send('Mr Anderson\'s \"not so secure\" workplace!');
 });
 
 app.post('/authenticate', urlEncodedParser, function(request, response){

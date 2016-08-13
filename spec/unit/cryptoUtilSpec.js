@@ -1,4 +1,4 @@
-var cryptoUtil = require("../cryptoUtil");
+var cryptoUtil = require("../../cryptoUtil");
 
 describe("Cryptography utility to encypt text. Used for encypting JWT payload", function(){
 

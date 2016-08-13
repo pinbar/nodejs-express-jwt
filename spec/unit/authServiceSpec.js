@@ -1,4 +1,4 @@
-var authService = require("../authService");
+var authService = require("../../authService");
 
 describe("Dummy service for authentication", function(){
 
