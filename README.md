@@ -36,7 +36,7 @@
 * use the token when calling any secure api (`/api/*`):
     * set the `Authorization` request header and add the jwt token, like so:
     * `Authorization: Bearer \<token\>`
-* `GET /api/megacity` can be accessed with any valid token but `GET /api/levrai` can only be accessed with neo's token
+* `GET /api/megacity` can be accessed with any token but `GET /api/levrai` can only be accessed with neo's token
 * some information in the payload is encrypted for privacy
 
 ### chaos
