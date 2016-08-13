@@ -23,7 +23,7 @@
 * to run all the tests, `npm test` in the project directory
 * to run a single test, `./node_modules/jasmine-node/bin/jasmine-node <dir/file>`
 * to run all unit tests, `./node_modules/jasmine-node/bin/jasmine-node spec/unit`
-* to run all integration/api tests, `./node_modules/jasmine-node/bin/jasmine-node spec/integration`
+* to run all integration/api tests, start the node server and then `./node_modules/jasmine-node/bin/jasmine-node spec/integration`
 
 ### api and authentication scenarios
 * access the unsecure api `GET /metacortex`

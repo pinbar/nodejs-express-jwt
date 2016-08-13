@@ -32,4 +32,25 @@ describe("Secure API tests", function() {
             done();
         });
     });
+    it("GET /megacity with a malformed token returns 401", function(done){
+        request.get({url: baseUrl + "/megacity", headers: {Authorization:"Bearer "+ "some malformed jwt"}}, function(error, response, body){
+            expect(response.statusCode).toBe(401);
+            expect(body).toBe("Invalid Token. Error Message: JsonWebTokenError: jwt malformed");
+            done();
+        });
+    });
+    it("GET /megacity with an invalid token returns 401", function(done){
+        request.get({url: baseUrl + "/megacity", headers: {Authorization:"Bearer "+ "badHeader.badPayload.badSignature"}}, function(error, response, body){
+            expect(response.statusCode).toBe(401);
+            expect(body).toBe("Invalid Token. Error Message: JsonWebTokenError: invalid token");
+            done();
+        });
+    });
+    it("GET /megacity with an invalid signature returns 401", function(done){
+        request.get({url: baseUrl + "/megacity", headers: {Authorization:"Bearer "+ "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwcm9ncmFtIjoiOWMwMDUzIiwicm9sZSI6Ijg2MGQ1OTc5Mzk4NSIsImlhdCI6MTQ3MTA5ODY1MywiZXhwIjoxNDcxMDk4ODMzfQ.X0NsujGplPIVSJ4NrGoU1sNu7KWRN-bYCt3PHL10Vk"}}, function(error, response, body){
+            expect(response.statusCode).toBe(401);
+            expect(body).toBe("Invalid Token. Error Message: JsonWebTokenError: invalid signature");
+            done();
+        });
+    });
 });
