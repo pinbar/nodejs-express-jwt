@@ -24,8 +24,22 @@ describe("API Authentication tests", function() {
             done();
         });
     });
-    it("POST returns 401 for invalid password", function(done){
+    it("POST returns 401 for wrong password for neo", function(done){
         request.post({url: baseUrl, form: {programName:"neo", programPassword:"laurence"}}, function(error, response, body){
+            expect(response.statusCode).toBe(401);
+            expect(body).toBe("Wrong credentials");
+            done();
+        });
+    });
+    it("POST returns 401 for wrong password for morpheus", function(done){
+        request.post({url: baseUrl, form: {programName:"morpheus", programPassword:"redpill"}}, function(error, response, body){
+            expect(response.statusCode).toBe(401);
+            expect(body).toBe("Wrong credentials");
+            done();
+        });
+    });
+    it("POST returns 401 for unknown username", function(done){
+        request.post({url: baseUrl, form: {programName:"pin", programPassword:"bar"}}, function(error, response, body){
             expect(response.statusCode).toBe(401);
             expect(body).toBe("Wrong credentials");
             done();

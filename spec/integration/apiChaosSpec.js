@@ -19,7 +19,8 @@ describe("Chaos API tests", function() {
             request.get(baseUrl + "/oracle/choice", function(error, response, body){
                 if(response.statusCode === 200) {
                     noChaos = true;
-                } else if (response.statusCode === 500) {
+                }
+                if (response.statusCode === 500) {
                     chaos = true;
                 }
                 if(callCount === maxCallCount) {

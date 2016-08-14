@@ -3,7 +3,8 @@ var request = require("request");
 var config = require("../../config");
 var baseUrl = "http://localhost:" + config.serverPort + "/api";
 var authUrl = "http://localhost:" + config.serverPort + "/authenticate";
-var jwt;
+var jwtForNeo;
+var jwtForMorpheus;
 
 describe("Secure API tests", function() {
 
@@ -19,24 +20,38 @@ describe("Secure API tests", function() {
             done();
         })
     });
-    it("Authenitcate call returns 200 for valid username and password for neo", function(done){
+    it("Get JWT for Neo", function(done){
         request.post({url: authUrl, form: {programName:"neo", programPassword:"keanu"}}, function(error, response, body){
             expect(response.statusCode).toBe(200);
-            jwt = body.replace("JWT: ", "");
+            jwtForNeo = body.replace("JWT: ", "");
             done();
         });
     });
-    it("GET /megacity with token returns 200", function(done){
-        request.get({url: baseUrl + "/megacity", headers: {Authorization:"Bearer "+ jwt}}, function(error, response, body){
+    it("Get JWT for Morpheus", function(done){
+        request.post({url: authUrl, form: {programName:"morpheus", programPassword:"laurence"}}, function(error, response, body){
+            expect(response.statusCode).toBe(200);
+            jwtForMorpheus = body.replace("JWT: ", "");
+            done();
+        });
+    });
+    it("GET /megacity with neo's token returns 200", function(done){
+        request.get({url: baseUrl + "/megacity", headers: {Authorization:"Bearer "+ jwtForNeo}}, function(error, response, body){
             expect(response.statusCode).toBe(200);
             expect(body).toBe("Welcome to the Mega City!");
             done();
         });
     });
     it("GET /levrai with neo's token returns 200", function(done){
-        request.get({url: baseUrl + "/levrai", headers: {Authorization:"Bearer "+ jwt}}, function(error, response, body){
+        request.get({url: baseUrl + "/levrai", headers: {Authorization:"Bearer "+ jwtForNeo}}, function(error, response, body){
             expect(response.statusCode).toBe(200);
             expect(body).toBe("neo, welcome to merovingian's \"secure\" restaurant!");
+            done();
+        });
+    });
+    it("GET /levrai with morpheus's token returns 403", function(done){
+        request.get({url: baseUrl + "/levrai", headers: {Authorization:"Bearer "+ jwtForMorpheus}}, function(error, response, body){
+            expect(response.statusCode).toBe(403);
+            expect(body).toBe("morpheus, you are forbidden from entering merovingian\'s \"secure\" restaurant!");
             done();
         });
     });

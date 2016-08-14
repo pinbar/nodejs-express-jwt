@@ -8,6 +8,7 @@
 * **jsonwebtoken** - jwt implementation for nodejs
 * **crypto** - cryptography module for nodejs
 * **jasmine** - testing framework
+* **istanbul** - module for test instrumentation and coverage
 * **request** - module for testing end-points
 
 ### getting started
@@ -20,11 +21,13 @@
     * in the project directory run `nodemon`
 
 ### running tests
-* install `jasmine` to run the tests. Global installation would allow you to use the CLI: `npm install -g jasmine`
 * tests are in the `spec` directory, which includes both `unit` and `integration/api` tests
-* to run all the tests, run `jasmine` or `npm test` in the project directory
+* to run all the tests, run `npm test` in the project directory
 * to run a single test, mark it with `fit` (use `fdescribe` to include the entire spec)
 * to exclude a test, mark it with `xit` (use `xdescribe` to exclude the entire spec)
+* **test coverage:** 
+    * to run instrumented code and generage coverage reports, run `npm test-with-coverage`
+    * coverage reports are in `/coverage` directory (can be configured in `.istanbul.yml`)
 
 ### api and authentication scenarios
 * access the unsecure api `GET /metacortex`

@@ -4,13 +4,16 @@
   "description": "A simple example of nodejs api with authentication",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine"
+    "test": "jasmine",
+    "test-with-coverage": "istanbul cover jasmine"
   },
   "author": "pinbar",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.13.4",
+    "istanbul": "^0.4.4",
+    "jasmine": "^2.4.1",
     "jsonwebtoken": "^7.1.7",
     "morgan": "^1.7.0",
     "request": "^2.74.0"

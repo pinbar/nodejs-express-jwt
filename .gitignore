@@ -5,6 +5,10 @@
 # Dependencies
 node_modules/
 
+# Coverage Reports
+coverage/
+
+
 # mac crap
 .DS_Store
 

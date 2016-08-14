@@ -8,13 +8,14 @@ module.exports = {
                 } else {
                     return false;
                 }
-            }
-            if(name === "morpheus") {
+            } else if(name === "morpheus") {
                 if(password === "laurence") {
                     return true;
                 } else {
                     return false;
                 }
+            } else {
+                return false;
             }
         } else {
             return false;
