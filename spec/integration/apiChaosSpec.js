@@ -3,7 +3,7 @@ var request = require("request");
 var config = require("../../config");
 var baseUrl = "http://localhost:" + config.serverPort;
 
-describe("Unsecure API tests", function() {
+describe("Chaos API tests", function() {
 
     beforeAll(function() {
         console.log("starting up app");

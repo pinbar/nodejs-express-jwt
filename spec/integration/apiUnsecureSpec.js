@@ -24,7 +24,7 @@ describe("Unsecure API tests", function() {
         });
     });
     it("GET dummy url returns 404", function(done){
-        request.post(baseUrl + "/someApi", function(error, response, body){
+        request.get(baseUrl + "/someApi", function(error, response, body){
             expect(response.statusCode).toBe(404);
             done();
         });
