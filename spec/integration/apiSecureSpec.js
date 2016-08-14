@@ -1,7 +1,8 @@
 var app = require("../../app");
 var request = require("request");
-var baseUrl = "http://localhost:8081/api";
-var authUrl = "http://localhost:8081/authenticate";
+var config = require("../../config");
+var baseUrl = "http://localhost:" + config.serverPort + "/api";
+var authUrl = "http://localhost:" + config.serverPort + "/authenticate";
 var jwt;
 
 describe("Secure API tests", function() {

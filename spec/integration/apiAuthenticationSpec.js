@@ -1,6 +1,7 @@
 var app = require("../../app");
 var request = require("request");
-var baseUrl = "http://localhost:8081/authenticate";
+var config = require("../../config");
+var baseUrl = "http://localhost:" + config.serverPort + "/authenticate";
 
 describe("API Authentication tests", function() {
 

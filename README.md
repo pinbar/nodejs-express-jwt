@@ -13,7 +13,7 @@
 ### getting started
 * clone repo and `npm install`
 * in the project directory, run `node index.js`
-* launch the browser and point to the baseurl `localhost:8081`
+* launch the browser and point to the baseurl `localhost:8081` (port can be changed in `config.js`)
 * *optional:*
     * use __nodemon__ to monitor for changes in your nodejs app and automatically restart the server
     * if you don't have nodemon, install it globally `npm install -g nodemon`
@@ -22,8 +22,8 @@
 ### running tests
 * tests are in the `spec` directory, which includes both `unit` and `integration/api` tests
 * to run all the tests, run `jasmine` or `npm test` in the project directory
-* to run a single test, mark it with `fit` (use `fdescribe` to only run that entire spec) and run `jasmine` or `npm test`
-* to exclude a test, mark it with `xit` (use `xdescribe` to exclude the entire spec) and run `jasmine` or `npm test`
+* to run a single test, mark it with `fit` (use `fdescribe` to include the entire spec)
+* to exclude a test, mark it with `xit` (use `xdescribe` to exclude the entire spec)
 
 ### api and authentication scenarios
 * access the unsecure api `GET /metacortex`
@@ -40,4 +40,4 @@
 
 ### chaos
 * a middleware that introduces `500 - Internal Server Error` errors randomly for any `/oracle/*` api call
-* this _chaos_ can be seen by repeatedly accessing `GET /oracle/choice`
+* this _chaos_ can be seen by repeatedly accessing `GET /oracle/choice` or by running this test: `/spec/integration/apiChaosSpec.js`
