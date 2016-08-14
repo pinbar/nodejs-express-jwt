@@ -1,7 +1,14 @@
+var app = require("../../app");
 var request = require("request");
 var baseUrl = "http://localhost:8081/authenticate";
 
 describe("API Authentication tests", function() {
+
+    beforeAll(function() {
+        console.log("starting up app");
+        app.start();
+    });
+
     it("POST returns 200 for valid username password for neo", function(done){
         request.post({url: baseUrl, form: {programName:"neo", programPassword:"keanu"}}, function(error, response, body){
             expect(response.statusCode).toBe(200);
@@ -44,4 +51,10 @@ describe("API Authentication tests", function() {
             done();
         });
     });
+
+    afterAll(function() {
+        console.log("shutting down app");
+        app.stop();
+    });
 });
+

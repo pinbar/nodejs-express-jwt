@@ -1,7 +1,14 @@
+var app = require("../../app");
 var request = require("request");
 var baseUrl = "http://localhost:8081";
 
 describe("Unsecure API tests", function() {
+
+    beforeAll(function() {
+        console.log("starting up app");
+        app.start();
+    });
+
     it("GET base url returns 200", function(done){
         request.get(baseUrl, function(error, response, body){
             expect(response.statusCode).toBe(200);
@@ -32,7 +39,7 @@ describe("Unsecure API tests", function() {
         var noChaos = false;
         var chaos = false;
         var callCount = 1;
-        var maxCallCount = 10;
+        var maxCallCount = 15;
         for(i = 0; (i <= maxCallCount); i++) {
             request.get(baseUrl + "/oracle/choice", function(error, response, body){
                 if(response.statusCode === 200) {
@@ -49,5 +56,10 @@ describe("Unsecure API tests", function() {
                 callCount++;
             });
         }
+    });
+
+    afterAll(function() {
+        console.log("shutting down app");
+        app.stop();
     });
 });

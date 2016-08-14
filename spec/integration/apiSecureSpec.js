@@ -1,9 +1,16 @@
+var app = require("../../app");
 var request = require("request");
 var baseUrl = "http://localhost:8081/api";
 var authUrl = "http://localhost:8081/authenticate";
 var jwt;
 
 describe("Secure API tests", function() {
+
+    beforeAll(function() {
+        console.log("starting up app");
+        app.start();
+    });
+
     it("GET /megacity without token returns 401", function(done){
         request.get(baseUrl + "/megacity", function(error, response, body){
             expect(response.statusCode).toBe(401);
@@ -52,5 +59,10 @@ describe("Secure API tests", function() {
             expect(body).toBe("Invalid Token. Error Message: JsonWebTokenError: invalid signature");
             done();
         });
+    });
+
+    afterAll(function() {
+        console.log("shutting down app");
+        app.stop();
     });
 });

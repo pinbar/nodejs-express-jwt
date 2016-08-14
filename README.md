@@ -7,8 +7,8 @@
 * **morgan** - middleware for logging
 * **jsonwebtoken** - jwt implementation for nodejs
 * **crypto** - cryptography module for nodejs
-* **node-jasmine** - jasmine tests for nodejs
-* **request** - request module for testing nodejs/express end-points
+* **jasmine** - testing framework
+* **request** - module for testing end-points
 
 ### getting started
 * clone repo and `npm install`
@@ -20,10 +20,10 @@
     * in the project directory run `nodemon`
 
 ### running tests
-* to run all the tests, `npm test` in the project directory
-* to run a single test, `./node_modules/jasmine-node/bin/jasmine-node <dir/file>`
-* to run all unit tests, `./node_modules/jasmine-node/bin/jasmine-node spec/unit`
-* to run all integration/api tests, start the node server and then `./node_modules/jasmine-node/bin/jasmine-node spec/integration`
+* tests are in the `spec` directory, which includes both `unit` and `integration/api` tests
+* to run all the tests, run `jasmine` or `npm test` in the project directory
+* to run a single test, mark it with `fit` (use `fdescribe` to only run that entire spec) and run `jasmine` or `npm test`
+* to exclude a test, mark it with `xit` (use `xdescribe` to exclude the entire spec) and run `jasmine` or `npm test`
 
 ### api and authentication scenarios
 * access the unsecure api `GET /metacortex`
