@@ -20,6 +20,7 @@
     * in the project directory run `nodemon`
 
 ### running tests
+* install `jasmine` to run the tests. Global installation would allow you to use the CLI: `npm install -g jasmine`
 * tests are in the `spec` directory, which includes both `unit` and `integration/api` tests
 * to run all the tests, run `jasmine` or `npm test` in the project directory
 * to run a single test, mark it with `fit` (use `fdescribe` to include the entire spec)
@@ -40,4 +41,6 @@
 
 ### chaos
 * a middleware that introduces `500 - Internal Server Error` errors randomly for any `/oracle/*` api call
-* this _chaos_ can be seen by repeatedly accessing `GET /oracle/choice` or by running this test: `/spec/integration/apiChaosSpec.js`
+* this _chaos_ can be seen:
+    * by repeatedly accessing `GET /oracle/choice` or 
+    * by running this test: `/spec/integration/apiChaosSpec.js`
