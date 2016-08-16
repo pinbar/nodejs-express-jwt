@@ -1,4 +1,4 @@
-exclude_paths:
-- spec/**/*
-- reports/**
-- node_modules/**
+#exclude_paths:
+#- spec/**/*
+#- reports/**
+#- node_modules/**
