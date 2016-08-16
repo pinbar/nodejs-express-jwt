@@ -1,13 +1,3 @@
-engines:
-  duplication:
-    enabled: true
-    config:
-      languages:
-      - javascript
-  eslint:
-    enabled: true
-  fixme:
-    enabled: true
 exclude_paths:
 - spec/**/*
 - reports/**
