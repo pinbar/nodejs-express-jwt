@@ -8,6 +8,7 @@
 * **jsonwebtoken** - jwt implementation for nodejs
 * **crypto** - cryptography module for nodejs
 * **jasmine** - testing framework
+* **jasmine-reporters** - test result reporters (using JUnit reporter for CircleCI)
 * **istanbul** - module for test instrumentation and coverage
 * **request** - module for testing end-points
 
@@ -25,9 +26,10 @@
 * to run all the tests, run `npm test` in the project directory
 * to run a single test, mark it with `fit` (use `fdescribe` to include the entire spec)
 * to exclude a test, mark it with `xit` (use `xdescribe` to exclude the entire spec)
+* **reporter** outputs JUnit format test result report in `reports/junit`
 * **test coverage:** 
     * to run instrumented code and generage coverage reports, run `npm test-with-coverage`
-    * coverage reports are in `/coverage` directory (can be configured in `.istanbul.yml`)
+    * coverage reports are in `reports/coverage` directory (can be configured in `.istanbul.yml`)
 
 ### api and authentication scenarios
 * access the unsecure api `GET /metacortex`

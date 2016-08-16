@@ -6,7 +6,7 @@
 node_modules/
 
 # Coverage Reports
-coverage/
+reports/
 
 
 # mac crap

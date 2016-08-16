@@ -1,2 +1,7 @@
 instrumentation:
     excludes: ['spec/**']
+reporting:
+    print: summary
+    reports:
+        - lcov
+    dir: reports/coverage

@@ -2,5 +2,7 @@ test:
   override:
     - npm run test-with-coverage
   post:
+    - mkdir $CIRCLE_TEST_REPORTS/junit
+    - mv reports/junit/** $CIRCLE_TEST_REPORTS/junit
     - mkdir $CIRCLE_ARTIFACTS/coverage
-    - mv coverage/** $CIRCLE_ARTIFACTS/coverage
+    - mv reports/coverage/lcov-report/** $CIRCLE_ARTIFACTS/coverage
