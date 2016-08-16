@@ -1,5 +1,9 @@
 ## A simple example of nodejs api with express and jwt authentication
 
+[![CircleCI](https://circleci.com/gh/pinbar/nodejs-express-jwt.svg?style=svg)](https://circleci.com/gh/pinbar/nodejs-express-jwt)
+
+<a href="https://codeclimate.com/github/pinbar/nodejs-express-jwt"><img src="https://codeclimate.com/github/pinbar/nodejs-express-jwt/badges/gpa.svg" /></a>
+
 ### tech stack
 * **nodejs** - javascript runtime built on v8 engine
 * **express** - minimalistic web api framework for nodejs
