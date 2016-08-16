@@ -1,6 +1,6 @@
 test:
   override:
-    - npm test-with-coverage
+    - npm run test-with-coverage
   post:
     - mkdir $CIRCLE_ARTIFACTS/coverage
     - mv coverage/** $CIRCLE_ARTIFACTS/coverage
