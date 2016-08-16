@@ -2,7 +2,9 @@ test:
   override:
     - npm run test-with-coverage
   post:
-    - mkdir $CIRCLE_TEST_REPORTS/junit
-    - mv reports/junit/** $CIRCLE_TEST_REPORTS/junit
+    - npm install codeclimate-test-reporter
+    - CODECLIMATE_REPO_TOKEN=$CodeClimateToken ./node_modules/.bin/codeclimate < reports/coverage/lcov.info  
+    - mkdir $CIRCLE_TEST_REPORTS/jasmine
+    - mv reports/junit/** $CIRCLE_TEST_REPORTS/jasmine
     - mkdir $CIRCLE_ARTIFACTS/coverage
     - mv reports/coverage/lcov-report/** $CIRCLE_ARTIFACTS/coverage
