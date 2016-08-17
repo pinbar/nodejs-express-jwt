@@ -37,7 +37,7 @@ app.post("/authenticate", urlEncodedParser, function(request, response){
                 role: cryptoUtil.encrypt("redpill")
             }
             var token = jsonwebtoken.sign(claim, config.jwtSecret, {
-                expiresIn: 180
+                expiresIn: config.jwtExpiresInSec
             });
             response.send("JWT: " + token);
         } else {

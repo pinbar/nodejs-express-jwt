@@ -8,7 +8,7 @@
 * **nodejs** - javascript runtime built on v8 engine
 * **express** - minimalistic web api framework for nodejs
 * **body-parser** - middleware for body parsing
-* **morgan** - middleware for logging
+* **morgan** - middleware for http request/response logging
 * **jsonwebtoken** - jwt implementation for nodejs
 * **crypto** - cryptography module for nodejs
 * **jasmine** - testing framework
@@ -21,19 +21,19 @@
 * in the project directory, run `node index.js`
 * launch the browser and point to the baseurl `localhost:8081` (port can be changed in `config.js`)
 * *optional:*
-    * use __nodemon__ to monitor for changes in your nodejs app and automatically restart the server
+    * use **nodemon** to monitor for changes in your nodejs app and automatically restart the server
     * if you don't have nodemon, install it globally `npm install -g nodemon`
     * in the project directory run `nodemon`
 
 ### running tests
-* tests are in the `spec` directory, which includes both `unit` and `integration/api` tests
+* tests are in the `spec` directory, which includes both `unit` and `integration` tests
 * to run all the tests, run `npm test` in the project directory
 * to run a single test, mark it with `fit` (use `fdescribe` to include the entire spec)
 * to exclude a test, mark it with `xit` (use `xdescribe` to exclude the entire spec)
-* **reporter** outputs JUnit format test result report in `reports/junit`
 * **test coverage:** 
-    * to run instrumented code and generage coverage reports, run `npm test-with-coverage`
+    * to run instrumented code and generage coverage reports, run `npm run test-with-coverage`
     * coverage reports are in `reports/coverage` directory (can be configured in `.istanbul.yml`)
+* **reporter** runs a jasmine helper to produce JUnit formatted test results in `reports/junit`
 
 ### api and authentication scenarios
 * access the unsecure api `GET /metacortex`
