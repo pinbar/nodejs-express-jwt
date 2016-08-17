@@ -9,7 +9,6 @@ var jwtForMorpheus;
 describe("Secure API tests", function() {
 
     beforeAll(function() {
-        console.log("starting up app");
         app.start();
     });
 
@@ -78,7 +77,6 @@ describe("Secure API tests", function() {
     });
 
     afterAll(function() {
-        console.log("shutting down app");
         app.stop();
     });
 });

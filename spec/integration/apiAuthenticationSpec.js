@@ -6,7 +6,6 @@ var baseUrl = "http://localhost:" + config.serverPort + "/authenticate";
 describe("API Authentication tests", function() {
 
     beforeAll(function() {
-        console.log("starting up app");
         app.start();
     });
 
@@ -68,7 +67,6 @@ describe("API Authentication tests", function() {
     });
 
     afterAll(function() {
-        console.log("shutting down app");
         app.stop();
     });
 });

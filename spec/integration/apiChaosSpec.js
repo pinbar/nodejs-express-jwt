@@ -6,7 +6,6 @@ var baseUrl = "http://localhost:" + config.serverPort;
 describe("Chaos API tests", function() {
 
     beforeAll(function() {
-        console.log("starting up app");
         app.start();
     });
 
@@ -35,7 +34,6 @@ describe("Chaos API tests", function() {
     });
 
     afterAll(function() {
-        console.log("shutting down app");
         app.stop();
     });
 });

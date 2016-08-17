@@ -6,7 +6,6 @@ var baseUrl = "http://localhost:" + config.serverPort;
 describe("Unsecure API tests", function() {
 
     beforeAll(function() {
-        console.log("starting up app");
         app.start();
     });
 
@@ -38,7 +37,6 @@ describe("Unsecure API tests", function() {
     });
 
     afterAll(function() {
-        console.log("shutting down app");
         app.stop();
     });
 });

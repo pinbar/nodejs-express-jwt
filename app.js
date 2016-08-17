@@ -104,10 +104,13 @@ app.use(function (req, res) {
 var server;
 module.exports = {
     start: function() {
-        server = app.listen(config.serverPort);
-        return server;
+        server = app.listen(config.serverPort, function(){
+            console.log("app started");
+        });
     },
     stop: function() {
-        server.close();
+        server.close(function(){
+            console.log("app stopped");
+        });
     }
 }
