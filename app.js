@@ -34,7 +34,7 @@ app.post("/authenticate", urlEncodedParser, function(request, response){
         if(authService.authenticate(name, password)) {
             var claim = {
                 program: cryptoUtil.encrypt(name),
-                role: cryptoUtil.encrypt("theOne"),
+                role: cryptoUtil.encrypt("redpill")
             }
             var token = jsonwebtoken.sign(claim, config.jwtSecret, {
                 expiresIn: 180
@@ -57,7 +57,7 @@ apiRouter.use(function(request, response, next){
                 response.status(401).send("Invalid Token. Error Message: " + error);
             } else {
                 request.decodedToken = decoded;
-                next();
+                return next();
             }
         });
     } else {
@@ -86,7 +86,7 @@ chaosApiRouter.use(function(request, response, next){
     if(config.causeChaos && Math.random() < config.chaosProbability) {
         response.status(500).send("Anomaly found!!");
     } else {
-        next();
+       return next();
     }
 });
 //any routes that use chaosApiRouter will randomly throw an error
@@ -109,5 +109,5 @@ module.exports = {
     },
     stop: function() {
         server.close();
-    },
+    }
 }
