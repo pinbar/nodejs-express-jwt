@@ -48,6 +48,10 @@
 * `GET /api/megacity` can be accessed with any token but `GET /api/levrai` can only be accessed with neo's token
 * some information in the payload is encrypted for privacy
 
+### encryption
+* a part of the jwt claims/playload is encrypted before signing and then decrypted after verification for privacy
+* this is different from JWE, where only the signature is encrypted while the claims/payload can be easily decoded and read
+
 ### chaos
 * a middleware that introduces `500 - Internal Server Error` errors randomly for any `/oracle/*` api call
 * this _chaos_ can be seen:

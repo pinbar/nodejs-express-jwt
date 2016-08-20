@@ -1,6 +1,7 @@
 # Project
 .project
 .settings
+.vscode
 
 # Dependencies
 node_modules/

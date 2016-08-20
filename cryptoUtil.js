@@ -9,8 +9,8 @@ module.exports = {
     encrypt: function encrypt(text) {
         if(text){
             var cipher = crypto.createCipher(algorithm, passPhrase);
-            var crypted = cipher.update(text.trim(),"utf8","hex");
-            crypted += cipher.final("hex");
+            var crypted = cipher.update(text.trim(),"utf8","base64");
+            crypted += cipher.final("base64");
             return crypted;
         } else {
             return "";
@@ -21,7 +21,7 @@ module.exports = {
         if(text){
             var decipher = crypto.createDecipher(algorithm, passPhrase);
             console.log(text);
-            var decrypted = decipher.update(text.trim(),"hex","utf8");
+            var decrypted = decipher.update(text.trim(),"base64","utf8");
             decrypted += decipher.final("utf8");
             return decrypted;
         } else {
