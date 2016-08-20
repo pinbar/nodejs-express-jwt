@@ -10,6 +10,16 @@ describe("Secure API tests", function() {
 
     beforeAll(function() {
         app.start();
+        //get token for neo
+        request.post({url: authUrl, form: {programName:"neo", programPassword:"keanu"}}, function(error, response, body){
+            expect(response.statusCode).toBe(200);
+            jwtForNeo = body.replace("JWT: ", "");
+        });
+        //get token for morpheus
+        request.post({url: authUrl, form: {programName:"morpheus", programPassword:"laurence"}}, function(error, response, body){
+            expect(response.statusCode).toBe(200);
+            jwtForMorpheus = body.replace("JWT: ", "");
+        });
     });
 
     it("GET /megacity without token returns 401", function(done){
@@ -18,20 +28,6 @@ describe("Secure API tests", function() {
             expect(body).toBe("No access token found");
             done();
         })
-    });
-    it("Get JWT for Neo", function(done){
-        request.post({url: authUrl, form: {programName:"neo", programPassword:"keanu"}}, function(error, response, body){
-            expect(response.statusCode).toBe(200);
-            jwtForNeo = body.replace("JWT: ", "");
-            done();
-        });
-    });
-    it("Get JWT for Morpheus", function(done){
-        request.post({url: authUrl, form: {programName:"morpheus", programPassword:"laurence"}}, function(error, response, body){
-            expect(response.statusCode).toBe(200);
-            jwtForMorpheus = body.replace("JWT: ", "");
-            done();
-        });
     });
     it("GET /megacity with neo's token returns 200", function(done){
         request.get({url: baseUrl + "/megacity", headers: {Authorization:"Bearer "+ jwtForNeo}}, function(error, response, body){
