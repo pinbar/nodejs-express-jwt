@@ -12,12 +12,10 @@ describe("Secure API tests", function() {
         app.start();
         //get token for neo
         request.post({url: authUrl, form: {programName:"neo", programPassword:"keanu"}}, function(error, response, body){
-            expect(response.statusCode).toBe(200);
             jwtForNeo = body.replace("JWT: ", "");
         });
         //get token for morpheus
         request.post({url: authUrl, form: {programName:"morpheus", programPassword:"laurence"}}, function(error, response, body){
-            expect(response.statusCode).toBe(200);
             jwtForMorpheus = body.replace("JWT: ", "");
         });
     });
