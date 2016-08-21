@@ -1,6 +1,6 @@
 ## A simple example of nodejs api with express and jwt authentication
 
-[![CircleCI](https://img.shields.io/circleci/project/pinbar/nodejs-express-jwt/master.svg)](https://circleci.com/gh/pinbar/nodejs-express-jwt) [![Test Coverage](https://codeclimate.com/github/pinbar/nodejs-express-jwt/badges/coverage.svg)](https://codeclimate.com/github/pinbar/nodejs-express-jwt/coverage)[![Code Climate](https://codeclimate.com/github/pinbar/nodejs-express-jwt/badges/gpa.svg)](https://codeclimate.com/github/pinbar/nodejs-express-jwt) [![Issue Count](https://codeclimate.com/github/pinbar/nodejs-express-jwt/badges/issue_count.svg)](https://codeclimate.com/github/pinbar/nodejs-express-jwt)
+[![CircleCI](https://img.shields.io/circleci/project/pinbar/nodejs-express-jwt/master.svg)](https://circleci.com/gh/pinbar/nodejs-express-jwt) [![Test Coverage](https://codeclimate.com/github/pinbar/nodejs-express-jwt/badges/coverage.svg)](https://codeclimate.com/github/pinbar/nodejs-express-jwt/coverage) [![Code Climate](https://codeclimate.com/github/pinbar/nodejs-express-jwt/badges/gpa.svg)](https://codeclimate.com/github/pinbar/nodejs-express-jwt) [![Issue Count](https://codeclimate.com/github/pinbar/nodejs-express-jwt/badges/issue_count.svg)](https://codeclimate.com/github/pinbar/nodejs-express-jwt)
 
 ### tech stack
 * **nodejs** - javascript runtime built on v8 engine
