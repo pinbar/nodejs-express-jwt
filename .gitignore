@@ -2,6 +2,7 @@
 .project
 .settings
 .vscode
+package-lock.json
 
 # Dependencies
 node_modules/

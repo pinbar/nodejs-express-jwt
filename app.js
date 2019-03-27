@@ -8,6 +8,25 @@ var cryptoUtil = require("./cryptoUtil");
 
 var app = express();
 
+/* begin swagger setup */
+const swaggerJSDoc = require("swagger-jsdoc");
+const swaggerUi = require('swagger-ui-express');
+
+const options = {
+    definition: {
+        openapi: '3.0.0',
+        info: {
+            title: 'Matrix API',
+            version: '1.0.0',
+            description: 'Demo of express, jwt, crypto, chaos and swagger',
+        },
+    },
+    apis: ['app.js'],
+  };
+  const swaggerSpec = swaggerJSDoc(options);
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+/* end swagger setup */
+
 var jsonParse = bodyParser.json();
 var urlEncodedParser = bodyParser.urlencoded({extended: false});
 
@@ -21,6 +40,16 @@ app.get("/", function(request, response){
     response.send("Welcome to the Matrix!");
 });
 
+/**
+ * @swagger
+ * /metacortex:
+ *    get:
+ *      description: Unsecured endpoint
+ *      produces: text
+ *      responses:
+ *          200: 
+ *              description: Success
+ */
 app.get("/metacortex", function(request, response){
     response.status(200).send("Mr Anderson\'s \"not so secure\" workplace!");
 });
@@ -67,6 +96,27 @@ apiRouter.use(function(request, response, next){
 //any routes that use apiRouter will be protected
 app.use("/api", apiRouter);
 
+/**
+ * @swagger
+ * /megacity:
+ *    get:
+ *      description: Secured endpoint that can only be accessed with a jwt
+ *      produces: text
+ *      parameters:
+ *        - in: header
+ *          required: true
+ *          name: Authorization
+ *          description: Bearer some.access.token
+ *          schema:
+ *              type: string
+ *      responses:
+ *          200: 
+ *              description: Success
+ *          401: 
+ *              description: Missing, malformed or invalid access token
+ *          403: 
+ *              description: Token with incorrect scope
+ */
 apiRouter.get("/megacity", function(request, response){
     response.send("Welcome to the Mega City!");
 });

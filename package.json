@@ -17,6 +17,8 @@
     "jasmine-reporters": "^2.2.0",
     "jsonwebtoken": "^7.1.7",
     "morgan": "^1.7.0",
-    "request": "^2.74.0"
+    "request": "^2.74.0",
+    "swagger-jsdoc": "^3.2.8",
+    "swagger-ui-express": "^4.0.2"
   }
 }
