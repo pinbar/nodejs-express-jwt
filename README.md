@@ -13,11 +13,14 @@
 * **jasmine-reporters** - test result reporters (using JUnit reporter for CircleCI)
 * **istanbul** - module for test instrumentation and coverage
 * **request** - module for testing end-points
+* **swagger-jsdocs** - swagger docs
+* **swagger-ui-express** - swagger UI
 
 ### getting started
 * clone repo and `npm install`
 * in the project directory, run `node index.js`
 * launch the browser and point to the baseurl `localhost:8081` (port can be changed in `config.js`)
+* swagger api docs can be viewed at `/api-docs`
 * *optional:*
     * use **nodemon** to monitor for changes in your nodejs app and automatically restart the server
     * if you don't have nodemon, install it globally `npm install -g nodemon`
